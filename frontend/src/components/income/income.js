@@ -1,29 +1,31 @@
 import { InnerLayout } from "../../styles/layouts";
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../../context/global";
 import Form from "../form/form";
 import IncomeItem from "../incomeItem/incomeItem";
 
 function Income() {
-    const {addIncome, incomes, getIncome} = useGlobalContext();
+    const { addIncome, incomes, getIncome } = useGlobalContext();
 
-    React.useEffect(() => {
+    useEffect(() => {
         getIncome();
-    }, [incomes])
+    }, [getIncome]);
+
     return (
-            <IncomeStyled>
-                <InnerLayout>
-                    <h1>Incomes</h1>
-                    <div className="income-content">
-                        <div className="form-container">
-                            <Form />
-                        </div>
-                        <div className="incomes">
-                            {incomes.map((income) => {
-                                if (!income) return null;
-                                const { _id, title, amount, date, category, description, type } = income;
-                                return <IncomeItem
+        <IncomeStyled>
+            <InnerLayout>
+                <h1>Incomes</h1>
+                <div className="income-content">
+                    <div className="form-container">
+                        <Form />
+                    </div>
+                    <div className="incomes">
+                        {incomes.map((income) => {
+                            if (!income) return null;
+                            const { _id, title, amount, date, category, description } = income;
+                            return (
+                                <IncomeItem
                                     key={_id}
                                     id={_id}
                                     title={title}
@@ -33,26 +35,28 @@ function Income() {
                                     category={category}
                                     indicatorColor={'var(--color-green)'}
                                 />
-                            })}
-                        </div>    
+                            );
+                        })}
                     </div>
-                </InnerLayout>    
-            </IncomeStyled>
-
+                </div>
+            </InnerLayout>
+        </IncomeStyled>
     );
 }
-
 
 const IncomeStyled = styled.div`
     display: flex;
     overflow: auto;
-    .income-content{
+
+    .income-content {
         display: flex;
         gap: 2rem;
-        .form-container{
+
+        .form-container {
             flex: 1;
         }
-        .incomes{
+
+        .incomes {
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -60,6 +64,5 @@ const IncomeStyled = styled.div`
         }
     }
 `;
-
 
 export default Income;
