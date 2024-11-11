@@ -8,7 +8,7 @@ import Button from "../button/button";
 import { plus } from '../../utils/icons';
 
 function Form() {
-    const {addIncome} = useGlobalContext();
+    const {addIncome, getIncome} = useGlobalContext();
     const [inputState, setInputState] = React.useState({
         title: '',
         amount: '',
@@ -18,7 +18,7 @@ function Form() {
         description:''
     });
 
-    const {title, amount, date, type, category, description} = inputState;
+    const {title, amount, date, category, description} = inputState;
     const handleInput = name => (e) => {
         setInputState({
             ...inputState,
@@ -29,11 +29,12 @@ function Form() {
     const handleSubmit = (e) => {
         e.preventDefault();
         addIncome(inputState);
+        getIncome();
     }
     return (
         <FormStyled onSubmit={handleSubmit}>
             <div className='input-control'>
-                <input type='text' value={title} name='title' placeholder='Salary'
+                <input type='text' value={title} name='title' placeholder='Salary Title'
                 onChange={handleInput('title')}/>
             </div>
             <div className='input-control'>
@@ -51,20 +52,12 @@ function Form() {
                }}/>
             </div>
             <div className='selects input-control'>
-                <select required value={type} name='type' id='type' onChange={handleInput('type')}>
-                <option value=''>Select Type</option>
-                <option value='recurring'>Recurring</option>
-                <option value='oneoff'>One Off</option>
-                <option value='other'>Other</option>
-                </select>
-            </div>
-            <div className='selects input-control'>
                 <select required value={category} name={'category'} id='category' onChange={handleInput('category')}>
                 <option value=''>Select Category</option>
                 <option value='salary'>Salary</option>
                 <option value='business'>Business</option>
                 <option value='investment'>Investment</option>
-                <option value='extra Income'>Extra Income</option>
+                <option value='extraincome'>Extra Income</option>
                 <option value='savings'>Savings</option>
                 <option value='others'>Others</option>
                 </select>
@@ -77,9 +70,9 @@ function Form() {
                 <Button 
                     name={'Add Income'}
                     icon={plus}
-                    bPad={'1rem 5.5rem'}
-                    bRad={'35px'}
-                    color={'var(--main-text-color)'}
+                    bPad={'0.5rem 3rem'}
+                    bRad={'40px'}
+                    color={'#f2f7f5'}
                 />
             </div>
         </FormStyled>
@@ -95,7 +88,7 @@ const FormStyled = styled.form`
         font-size: inherit;
         outline: none;
         border: none;
-        padding: 1rem;
+        padding: 0.5 rem 1rem;
         border-radius: 5px;
         border: 1px solid var(--primary-color);
         background: transparent;
@@ -113,7 +106,7 @@ const FormStyled = styled.form`
     }
         .selects{
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         select{
             color: var(--main-text-color);
             &:focus, &:active{
@@ -123,7 +116,7 @@ const FormStyled = styled.form`
         }
         .submit-btn{
             button{
-                width: 100%;
+                width: 65%;
                 padding: 1rem;
                 border-radius: 5px;
                 border: none;
@@ -132,7 +125,7 @@ const FormStyled = styled.form`
                 cursor: pointer;
                 transition: all 0.3s ease;
                 &:hover{
-                    background-color: var(--color-hover);
+                    background-color: #00473e;
                 }
             }
             

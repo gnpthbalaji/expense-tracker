@@ -3,21 +3,38 @@ import React from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../../context/global";
 import Form from "../form/form";
+import IncomeItem from "../incomeItem/incomeItem";
 
 function Income() {
-    const {addIncome} = useGlobalContext();
+    const {addIncome, incomes, getIncome} = useGlobalContext();
+
+    React.useEffect(() => {
+        getIncome();
+    }, [incomes])
     return (
-        
             <IncomeStyled>
                 <InnerLayout>
-                    <h1>Income</h1>
+                    <h1>Incomes</h1>
                     <div className="income-content">
                         <div className="form-container">
                             <Form />
                         </div>
                         <div className="incomes">
-                        </div>
-                        
+                            {incomes.map((income) => {
+                                if (!income) return null;
+                                const { _id, title, amount, date, category, description, type } = income;
+                                return <IncomeItem
+                                    key={_id}
+                                    id={_id}
+                                    title={title}
+                                    description={description}
+                                    amount={amount}
+                                    date={date}
+                                    category={category}
+                                    indicatorColor={'var(--color-green)'}
+                                />
+                            })}
+                        </div>    
                     </div>
                 </InnerLayout>    
             </IncomeStyled>
@@ -27,6 +44,21 @@ function Income() {
 
 
 const IncomeStyled = styled.div`
+    display: flex;
+    overflow: auto;
+    .income-content{
+        display: flex;
+        gap: 2rem;
+        .form-container{
+            flex: 1;
+        }
+        .incomes{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
 `;
 
 

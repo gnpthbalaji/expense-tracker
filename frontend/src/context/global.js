@@ -23,9 +23,21 @@ export const GlobalContextProvider = ({ children }) => {
             setError(error.response.data.message);
         }
     }
+
+    const getIncome = async (income) => {
+        try {
+            const response = await axios.get(`${BASE_URL}getincome`, income);
+            setIncomes(response.data);
+        } catch (error) {
+            setError(error.response.data.message);
+        }
+    }
+
     return (
         <GlobalContext.Provider value={{
-            addIncome
+            addIncome,
+            getIncome,
+            incomes,
         }}>
             {children}
         </GlobalContext.Provider>

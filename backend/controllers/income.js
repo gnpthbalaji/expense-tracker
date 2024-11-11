@@ -3,7 +3,7 @@ const incomeSchema = require('../models/incomeModel');
 const addIncome = async (req, res) => {
     const { title, description, amount, type, date, category } = req.body;
 
-    if (!title || !description || !amount || !type || !date || !category) {
+    if (!title || !description || !amount || !date || !category) {
         return res.status(400).json({ message: 'All fields are required' });
     }
 

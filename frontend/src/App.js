@@ -51,13 +51,14 @@ function App() {
 const AppStyled = styled.div`
   height: 100vh;
   display: flex;
+  position: relative;
   main{
     flex: 1;
+    background: var(--primary-color3);
     border: 3px solid var(--color-grey);
     color: var(--main-text-color);
     backdrop-filter: blur(5px);
     border-radius: 10px;
-    overflow: auto;
     overflow-x: hidden;
     &::-webkit-scrollbar{
         width: 0;
