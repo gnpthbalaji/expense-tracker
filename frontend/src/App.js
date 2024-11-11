@@ -3,12 +3,37 @@ import styled from "styled-components";
 import {MainLayout} from "./styles/layouts";
 import Gradient from "./components/gradient/gradient";
 import Navigation from "./components/navigation/navigation";
+import Dashboard from "./components/dashboard/dashboard";
+import Income from "./components/income/income";
+import Expenses from "./components/expenses/expenses";
+import { useGlobalContext } from "./context/global";
+
+
 
 function App() {
-  const gradientMemo = useMemo(() => {
-    return <Gradient /> }, []);
+  
   
   const [active, setActive] = React.useState(1);
+
+  const globalContext = useGlobalContext();
+  console.log(globalContext);
+  const displayData = useMemo(() => {
+    switch (active) {
+      case 1:
+        return <Dashboard />
+      case 2:
+        return <h1>View Transactions</h1>;
+      case 3:
+        return <Income />;
+      case 4:
+        return <Expenses />;
+      default:
+        return <Dashboard />;
+    }
+  }, [active]);
+  const gradientMemo = useMemo(() => {
+    return <Gradient /> }, []);
+
   return (
     <AppStyled> 
       {gradientMemo}
@@ -16,7 +41,7 @@ function App() {
       <MainLayout>
         <Navigation active = {active} setActive= {setActive}/>
         <main>   
-          <h1>Hello</h1>
+          {displayData}
         </main>
       
       </MainLayout>

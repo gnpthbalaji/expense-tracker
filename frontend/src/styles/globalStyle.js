@@ -20,6 +20,8 @@ export const GlobalStyle = createGlobalStyle`
         --color-hover:#fec7d7;
         --color-delete: #e45858;
         --main-text-color:#0e172c;
+        --button-color:#a786df;
+        --select-color:#0e172c
 
     }
     body{
