@@ -7,7 +7,7 @@ function Dashboard() {
         
             <DashboardStyled>
                 <InnerLayout>
-                   <h1> All Transactions </h1>
+                   <h1> All Transactions - History</h1>
                 </InnerLayout>    
             </DashboardStyled>
 
