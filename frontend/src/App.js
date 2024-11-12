@@ -46,11 +46,13 @@ function App() {
                 {gradientMemo}
                 <MainLayout>
                   <Navigation active={active} setActive={setActive} />
+                  
+                  <main>
                   <div className="auth-links">
-                    {/* Login and Sign Up Links */}
                     <Link to="/login">Login</Link> | <Link to="/signup">Sign Up</Link>
                   </div>
-                  <main>{displayData}</main>
+                  {displayData}
+                  </main>
                 </MainLayout>
               </>
             }
@@ -71,7 +73,7 @@ const AppStyled = styled.div`
     top: 10px;
     right: 10px;
     a {
-      color: var(--link-color);
+      color: var(--main-text-color);
       margin: 0 10px;
       text-decoration: none;
       &:hover {
