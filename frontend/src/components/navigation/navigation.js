@@ -10,7 +10,7 @@ function Navigation ({active, setActive}){
                 <img src={avatar} alt="avatar"/>
                 <div className="text">
                     <h3>John Doe</h3>
-                    <p>Your Money</p>
+                    <p>Your Financials</p>
                 </div>
             </div>
             <ul className="nav-items">

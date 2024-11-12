@@ -25,6 +25,7 @@ const ButtonStyled = styled.button`
     outline: none;
     border: none;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;

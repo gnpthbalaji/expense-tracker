@@ -31,4 +31,6 @@ export const GlobalStyle = createGlobalStyle`
         font-size: clamp(1rem, 1.5vw, 2rem);
         overflow: hidden;
     }
+
+    
     `;

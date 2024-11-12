@@ -41,6 +41,8 @@ function IncomeItem({
         }
     };
 
+
+
     const expenseCatIcon = () => {
         switch (category) {
             case 'education':
@@ -88,6 +90,7 @@ function IncomeItem({
                             color = {'var(--background-color)'}
                             iColor = {'var(--background-color)'}
                             hColor = {'var(--color-delete)'}
+                            onClick={() => deleteItem(id)}
                         />
                     </div>
                 </div>
