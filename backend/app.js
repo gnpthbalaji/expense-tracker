@@ -16,6 +16,10 @@ readdirSync('./routes').forEach((route) => {
     const routePath = `./routes/${route}`;
     app.use('/api/v1', require(routePath));
 });
+const authRoutes = require('./routes/authRoutes');
+app.use('/api/v1/auth', authRoutes);
+
+
 
 app.get('/', (req, res) => {
     res.send('Hi JS World')
