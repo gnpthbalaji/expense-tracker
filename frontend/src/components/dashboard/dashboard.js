@@ -18,7 +18,7 @@ function Dashboard() {
     return (
         <DashboardStyled>
             <InnerLayout>
-                <h1>All Transactions</h1>
+                <h3>All Transactions</h3>
                 <div className="stats-con">
                     <div className="chart-con">
                         <Chart />
@@ -45,7 +45,7 @@ function Dashboard() {
                     </div>
                     <div className="history-con">
                         <History />
-                        <h3 className="salary-title">Min <span>Salary</span>Max</h3>
+                        <h3 className="salary-title">Min <span>Income</span>Max</h3>
                         <div className="salary-item">
                             <p>
                                 ${Math.min(...incomes.map(item => item.amount))}
@@ -108,14 +108,18 @@ const DashboardStyled = styled.div`
                     padding: 1rem;
                     justify-content: center;
                     align-items: center;
-
+                    h4{
+                        font-size: 1rem;
+                        justify-content: center;
+                        align-items: center;}
                     p {
-                        font-size: 1.5rem;
-                        font-weight: 400;
+                        font-size: 1rem;
+                        font-weight: 200;
                         color: #a786df;
+                        align-items: center;
 
                         @media (min-width: 768px) {
-                            font-size: 3rem;
+                            font-size: 2rem;
                         }
                     }
                 }
@@ -147,6 +151,7 @@ const DashboardStyled = styled.div`
 
             h3 {
                 margin: 1rem 0;
+                font-size: 1.2rem;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;

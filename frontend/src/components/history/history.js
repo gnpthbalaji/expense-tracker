@@ -8,7 +8,7 @@ function History() {
 
     return (
         <HistoryStyled>
-            <h1>Recent Transactions</h1>
+            <h4>Recent Transactions</h4>
             {history.map((item) => {
                 const { _id, title, amount, date, type } = item;
                 return (
