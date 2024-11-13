@@ -8,12 +8,12 @@ import Button from "../button/button";
 import { plus } from '../../utils/icons';
 
 function ExpenseForm() {
-    const {addExpense, getExpense} = useGlobalContext();
+    const {addExpense, getExpense, error, setError} = useGlobalContext();
     const [inputState, setInputState] = React.useState({
         title: '',
         amount: '',
         date: '',
-        type: '',
+        type: 'expense',
         category: '',
         description:''
     });
@@ -23,7 +23,8 @@ function ExpenseForm() {
         setInputState({
             ...inputState,
             [name]: e.target.value
-        });
+        })
+        setError('');
     };
 
     const handleSubmit = (e) => {
@@ -34,13 +35,14 @@ function ExpenseForm() {
             title: '',
             amount: '',
             date: '',
-            type: '',
+            type: 'expense',
             category: '',
             description:''
         });
     }
     return (
         <ExpenseFormStyled onSubmit={handleSubmit}>
+             {error && <p style={{color: '#e53170'}}>{error}</p>}
             <div className='input-control'>
                 <input type='text' value={title} name='title' placeholder='Expense Title'
                 onChange={handleInput('title')}/>

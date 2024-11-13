@@ -5,6 +5,7 @@ import { MainLayout } from "./styles/layouts";
 import Gradient from "./components/gradient/gradient";
 import Navigation from "./components/navigation/navigation";
 import Dashboard from "./components/dashboard/dashboard";
+import AllTransaction from "./components/allTransaction/allTransaction";
 import Income from "./components/income/income";
 import Expenses from "./components/expenses/expenses";
 import Login from "./components/loginSignUp/login";
@@ -21,7 +22,7 @@ function App() {
       case 1:
         return <Dashboard />;
       case 2:
-        return <h1>View Transactions</h1>;
+        return <AllTransaction />;
       case 3:
         return <Income />;
       case 4:

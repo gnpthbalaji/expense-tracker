@@ -106,9 +106,24 @@ export const GlobalContextProvider = ({ children }) => {
         });
         return totalexpense;
     }
-    console.log('Total Expense:',totalExpense())
+    const totalBalance = () => {
+        return totalIncome() - totalExpense();
+    }
+    const transactionHistory = () => {
+        const history = [...incomes, ...expenses]
+        history.sort((a, b) => {
+            return new Date(b.createdAt) - new Date(a.createdAt)
+        })
 
-
+        return history.slice(0, 3)
+    }
+    const AllTransaction = () => {
+        const allTransactions= [...incomes, ...expenses]
+        allTransactions.sort((a, b) => {
+            return new Date(b.createdAt) - new Date(a.createdAt)
+        })
+        return allTransactions
+    }
     return (
         <GlobalContext.Provider value={{
             addIncome,
@@ -121,6 +136,11 @@ export const GlobalContextProvider = ({ children }) => {
             expenses,
             deleteExpense,
             totalExpense,
+            totalBalance,
+            transactionHistory,
+            AllTransaction,
+            error, 
+            setError
         }}>
             {children}
         </GlobalContext.Provider>

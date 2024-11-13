@@ -22,7 +22,9 @@ export const GlobalStyle = createGlobalStyle`
         --main-text-color:#0e172c;
         --button-color:#a786df;
         --select-color:#0e172c
-
+        --chart-background: #fffffe;
+        --chart-border: #0e172c;
+        
     }
     body{
         font-family: 'Poppins', sans-serif;
