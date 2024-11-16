@@ -13,7 +13,7 @@ router
     .get('/getincome', limiter, getIncome)
     .delete('/deleteincome/:id', limiter, deleteIncome)
     .post('/addexpense', addExpense)
-    .get('/getexpense', getExpense)
-    .delete('/deleteexpense/:id', deleteExpense);
+    .get('/getexpense', limiter, getExpense)
+    .delete('/deleteexpense/:id', limiter, deleteExpense);
 
 module.exports = router;
