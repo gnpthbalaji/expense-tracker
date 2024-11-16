@@ -11,7 +11,7 @@ const limiter = rateLimit({
 router
     .post('/addincome', addIncome)
     .get('/getincome', limiter, getIncome)
-    .delete('/deleteincome/:id', deleteIncome)
+    .delete('/deleteincome/:id', limiter, deleteIncome)
     .post('/addexpense', addExpense)
     .get('/getexpense', getExpense)
     .delete('/deleteexpense/:id', deleteExpense);
